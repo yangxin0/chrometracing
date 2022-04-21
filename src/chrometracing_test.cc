@@ -35,8 +35,6 @@ TEST(ChromeTracing, EventRenderCorrently) {
 } // namespace
 
 int main(int argc, char *argv[]) {
-    setenv("CHROMETRACING", "./trace.log", 1);
-    TRACE_INIT();
     ::testing::InitGoogleMock(&argc, argv);
     return RUN_ALL_TESTS();
 }
