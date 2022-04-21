@@ -3,3 +3,4 @@
 /bazel-chrometracing
 /bazel-testlogs
 *.swp
+compile_commands.json
