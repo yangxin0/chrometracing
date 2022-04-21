@@ -13,6 +13,10 @@ cc_library(
 cc_test(
     name = "chrometracing_test",
     srcs = ["chrometracing_test.cc"],
-    deps = [":chrometracing"],
+    deps = [
+        "@com_google_googletest//:gtest",
+        "@com_google_googletest//:gtest_main",
+        ":chrometracing"
+    ],
     linkstatic = True
 )

@@ -97,7 +97,7 @@ std::string TraceEvent::Escape(const std::string &s) {
     std::vector<std::string> esc = {
         "\\", "\\\\",
         "\"", "\\\"",
-        "\n", "\\\n",
+        "\n", "\\n",
     };
 
     for (size_t i = 0; i < esc.size(); i += 2) {
@@ -111,7 +111,7 @@ std::string TraceEvent::Escape(const std::string &s) {
 
 std::string TraceEvent::Render() {
     std::string event = "{";
-    event += Replace(R"("name":"$",)", "$", Escape(this->name));
+    event += Replace(R"(name:"$",)", "$", Escape(this->name));
     event += Replace(R"("ph":"$",)", "$", std::string(1, static_cast<char>(this->phase)));
     event += Replace(R"("pid":$,)",  "$", std::to_string(this->pid));
     event += Replace(R"("tid":$,)",  "$", std::to_string(this->tid));
@@ -119,7 +119,7 @@ std::string TraceEvent::Render() {
         event += Replace(R"("time":$,)", "$", std::to_string(this->time));
     }
     if (!this->process_name.empty()) {
-        event += Replace(R"("args":{"name":"$"})", "$", Escape(this->process_name));
+        event += Replace(R"("args":{"name":"$"},)", "$", Escape(this->process_name));
     }
     event += "},\n";
 
