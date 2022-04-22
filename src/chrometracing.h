@@ -4,8 +4,13 @@
 #include <cstdio>
 #include <chrono>
 
+#ifdef CHROMETRACING
 #define TRACE_INIT() chrometracing::TraceEnv::Init()
-#define TRACE(name) auto __ct__ = chrometracing::Event(name)
+#define TRACE() auto __ct__ = chrometracing::Event(__FUNCTION__)
+#else
+#define TRACE_INIT()
+#define TRACE()
+#endif
 
 namespace chrometracing {
 

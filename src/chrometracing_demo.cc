@@ -2,7 +2,7 @@
 #include "chrometracing.h"
 
 void Func2() {
-    TRACE("Func2");
+    TRACE();
     int sum = 0;
     for (int i = 0; i < 1000000000; i++) {
         sum += i;
@@ -11,7 +11,7 @@ void Func2() {
 }
 
 void Func3() {
-    TRACE("Func3");
+    TRACE();
     int sum = 0;
     for (int i = 0; i < 100000000; i++) {
         sum += i;
@@ -21,7 +21,7 @@ void Func3() {
 }
 
 void Func1() {
-    TRACE("Func1");
+    TRACE();
     printf("Func1\n");
     for (int i = 0; i < 60; i++) {
         Func2();

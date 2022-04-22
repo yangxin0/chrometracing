@@ -16,7 +16,8 @@ cc_binary(
     deps = [
         "chrometracing"
     ],
-    linkstatic = True
+    linkstatic = True,
+    copts = ["-DCHROMETRACING"]
 )
 
 cc_test(
