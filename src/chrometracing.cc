@@ -26,6 +26,7 @@ void TraceEnv::Init() {
     if (trace) {
         started_at_ = std::chrono::steady_clock::now();
         trace_file_ = fopen(trace, "w");
+        setvbuf(trace_file_, NULL, _IOLBF, 256);
         if (!trace_file_) {
             fprintf(stderr, "open trace file error, %s\n", trace);
             return;
