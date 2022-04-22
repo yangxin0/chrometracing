@@ -5,7 +5,7 @@
 #include <chrono>
 
 #define TRACE_INIT() chrometracing::TraceEnv::Init()
-#define TRACE(name) auto ct = chrometracing::Event(name)
+#define TRACE(name) auto __ct__ = chrometracing::Event(name)
 
 namespace chrometracing {
 
