@@ -10,6 +10,15 @@ cc_library(
     hdrs = ["chrometracing.h"]
 )
 
+cc_binary(
+    name = "chrometracing_demo",
+    srcs = ["chrometracing_demo.cc"],
+    deps = [
+        "chrometracing"
+    ],
+    linkstatic = True
+)
+
 cc_test(
     name = "chrometracing_test",
     srcs = ["chrometracing_test.cc"],

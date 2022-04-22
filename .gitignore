@@ -4,3 +4,4 @@
 /bazel-testlogs
 *.swp
 compile_commands.json
+trace.log
