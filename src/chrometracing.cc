@@ -75,7 +75,7 @@ int64_t TraceEnv::GetTid() {
 // fixme
 std::string TraceEnv::GetProcessName() {
     // default name
-    return "chrometracing";
+    return "Main";
 }
 
 std::string TraceEvent::Replace(
@@ -111,15 +111,15 @@ std::string TraceEvent::Escape(const std::string &s) {
 
 std::string TraceEvent::Render() {
     std::string event = "{";
-    event += Replace(R"(name:"$",)", "$", Escape(this->name));
+    event += Replace(R"("name":"$",)", "$", Escape(this->name));
     event += Replace(R"("ph":"$",)", "$", std::string(1, static_cast<char>(this->phase)));
     event += Replace(R"("pid":$,)",  "$", std::to_string(this->pid));
     event += Replace(R"("tid":$,)",  "$", std::to_string(this->tid));
     if (this->time) {
-        event += Replace(R"("time":$,)", "$", std::to_string(this->time));
+        event += Replace(R"("ts":$)", "$", std::to_string(this->time));
     }
     if (!this->process_name.empty()) {
-        event += Replace(R"("args":{"name":"$"},)", "$", Escape(this->process_name));
+        event += Replace(R"("args":{"name":"$"})", "$", Escape(this->process_name));
     }
     event += "},\n";
 
